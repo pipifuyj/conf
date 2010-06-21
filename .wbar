@@ -1,0 +1,77 @@
+# The Bar && Font
+i: /usr/share/wbar/iconpack/wbar.osx/osxbarback.png
+t: /usr/share/wbar/iconpack/wbar.osx/font/16
+c:
+
+i: /usr/share/icons/gnome/32x32/apps/gnome-terminal.png
+t: Gnome Terminal
+c: gnome-terminal
+
+i:/usr/share/icons/hicolor/64x64/apps/google-chrome.png
+t: google-chrome
+c: google-chrome
+ 
+i: /home/fuyanjie/.icons/crystal/64x64/apps/firefox.png
+t:Firefox
+c:firefox
+
+i: /usr/share/casnet/pics/casnet.png
+t: CAS-Net
+c: casnet-gui
+
+i: /home/fuyanjie/software/icon/mysql-query-browser.png
+t: mysql-query-browser
+c: mysql-query-browser
+
+i: /home/fuyanjie/software/icon/png-0674.png
+t: connect
+c: nautilus-connect-server
+
+i: /usr/share/icons/hicolor/48x48/apps/eclipse.png
+t: eclipse
+c: eclipse
+
+i: /usr/share/pixmaps/filezilla.png
+t: FileZilla
+c: filezilla
+
+i:/home/fuyanjie/.icons/GartoonRedux/16x16/apps/nautilus.png
+t: Nautilus
+c: nautilus --no-desktop --browser
+
+
+i: /usr/share/icons/hicolor/48x48/apps/pidgin.png
+c:pidgin
+t:pidgin
+
+i: /usr/share/skype/avatars/Skype.png
+t: Skype
+c: skype
+
+i: /usr/share/app-install/icons/fetion.png
+t: Linux-fetion
+c: linux-fetion
+
+i: /home/fuyanjie/software/icon/Virtualbox_logo.png
+t: VirtualBox
+c: VirtualBox
+
+i: /usr/share/pixmaps/tsclient.png
+t: tsclient
+c: tsclient
+
+i: /usr/share/pixmaps/RadioGet.png
+t: RadioGet
+c: RadioGet
+
+i:/home/fuyanjie/.icons/crystal/128x128/apps/tux.png
+t: iptux
+c: iptux
+
+i: /home/fuyanjie/software/icon/png-0003.png
+t: VolumeControl
+c: gnome-volume-control
+
+i: /home/fuyanjie/software/icon/png-0089.png
+t: grun
+c: grun

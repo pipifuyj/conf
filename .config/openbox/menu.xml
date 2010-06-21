@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<menu id="root-menu-filemanager" label="文件管理">
+		 	<item label="Nautilus文件管理器">
+					<action name="Execute ">
+						<execute> 
+							nautilus --no-desktop --browser
+						</execute>
+					</action>
+			</item>
+			<item label="Pcmanfm文件管理器">
+					<action name=" Execute">
+						<execute> 
+							pcmanfm
+						</execute>
+					</action>
+			</item>
+		</menu>
+		<menu id="root-menu-network" label="网络软件">
+			<item label="Google 浏览器">
+				<action name="Execute">
+					<execute>
+						chromium-browser
+					</execute>
+				</action>
+			</item>
+			<item label="Firefox浏览器">
+						<action name="Execute">
+							<execute>
+								firefox
+							</execute>
+						</action>
+			</item>
+			<item label="Pidgin">
+				<action name="Execute">
+					<execute>
+						pidgin
+					</execute>
+				</action>
+			</item>
+			<item label="腾讯QQ">
+				<action name="Execute">
+					<execute>
+						qq
+					</execute>
+				</action>
+			</item>
+			<item label="飞信">
+				<action name="Execute">
+					<execute>
+						linux-fetion
+					</execute>
+				</action>
+			</item>
+			<item label="Skype">
+				<action name="Execute">
+					<execute>
+						skype
+					</execute>
+				</action>
+			</item>
+			<item label="远程桌面">
+				<action name="Execute">
+					<execute>
+						tsclient
+					</execute>
+				</action>
+			</item>
+			<item label="电驴">
+				<action name="Execute">
+					<execute>
+						amule
+					</execute>
+				</action>
+			</item>
+			<item label="Filezilla FTP 客户端">
+				<action name="Execute">
+					<execute>
+						filezilla
+					</execute>
+				</action>
+			</item>
+			<item label="沙大收音机">
+				<action name="Execute">
+					<execute>
+						RadioGet
+					</execute>
+				</action>
+			</item>
+			<item label="飞鸽传书">
+				<action name="Execute">
+					<execute>
+						iptux
+					</execute>
+				</action>
+			</item>
+			<item label="中科院网关登录">
+				<action name="Execute">
+					<execute>
+						casnet-gui
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-education" label="教育软件">
+			<item label="StarDict">
+				<action name="Execute">
+					<execute>
+						stardict
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-media" label="影音软件">
+			<item label="Rythmbox">
+				<action name="Execute">
+					<execute>
+						rhythmbox	
+					</execute>
+				</action>
+			</item>
+			<item label="SMPlayer">
+				<action name="Execute">
+					<execute>
+						smplayer
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-edit" label="编辑软件">
+			<item label="GVim">
+				<action name="Execute">
+					<execute>
+						gvim
+					</execute>
+				</action>
+			</item>
+			<item label="GEdit">
+				<action name="Execute">
+					<execute>
+						gedit
+					</execute>
+				</action>
+			</item>
+			<item label="leafpad">
+				<action name="Execute">
+					<execute>
+						leafpad
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-system" label="系统设置">
+			<item label="新立德软件管理">
+				<action name="Execute">
+					<execute>
+						bash ~/MyScript/StartSynaptic.sh
+					</execute>
+				</action>
+			</item>
+			<item label="VirtualBox">
+				<action name="Execute">
+					<execute>
+						VirtualBox
+					</execute>
+				</action>
+			</item>
+			<item label="音量控制">
+				<action name="Execute">
+					<execute>
+						gnome-volume-control
+					</execute>
+				</action>
+			</item>
+			<item label="桌面壁纸">
+				<action name="Execute">
+					<execute>
+						nitrogen 
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<!-- This requires the presence of the 'menu' package to work -->
+		<separator/>
+		<menu id="client-list-menu"/>
+		<menu id="Debian" />
+		<separator/>
+		<item label="ObConf">
+			<action name="Execute">
+				<execute>
+					obconf
+				</execute>
+			</action>
+		</item>
+		<item label="ObMenu">
+			<action name="Execute">
+				<execute>
+					obmenu
+				</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="退出当前会话">
+			<action name="Execute">
+				<execute>
+					/home/fuyanjie/MyScript/exit.sh
+				</execute>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
