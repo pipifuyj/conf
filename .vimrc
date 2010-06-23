@@ -99,7 +99,15 @@ else
 	set backup 
 endif
 
+" 在状态行上显示光标所在位置的行号和列号
 set ruler
+set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+
+" 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\
+
+" 光标移动到buffer的顶部和底部时保持3行距离
+set scrolloff=3
 
 set showcmd 
 
@@ -115,8 +123,19 @@ set showmatch
 " 匹配括号高亮的时间（单位是十分之一秒）
 set matchtime=5
 
+" 不要生成swap文件，当buffer被丢弃的时候隐藏它
+setlocal noswapfile
+set bufhidden=hide
+
+" 字符间插入的像素行数目
+set linespace=0
+
 " 在搜索的时候忽略大小写
 set ignorecase
+
+" 高亮字符，让其不受100列限制
+highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
+match OverLength '\%101v.*'
 
 " 状态行颜色
 highlight StatusLine guifg=SlateBlue guibg=Yellow
@@ -138,10 +157,10 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " 在处理未保存或只读文件的时候，弹出确认
 set confirm
-
-" 侦测文件类型
+" 载入文件类型插件
 filetype plugin on 
 filetype indent on 
+" 侦测文件类型
 filetype on
 
 " 保存全局变量
@@ -154,6 +173,9 @@ set selectmode=mouse,key
 
 " 启动的时候不显示那个援助索马里儿童的提示
 set shortmess=atI
+
+" 与windows共享剪贴板
+set clipboard+=unnamed
 
 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
 set report=0
@@ -177,7 +199,7 @@ nmap <leader>w :w!<cr>
 nmap <leader>x :x!<cr>
 
 " ^z快速进入shell
-nmap <C-Z> :shell<cr>
+nmap <C-Z>  :q!<CR>:q!<CR>:q!<CR>
 
 "新建tab
 nmap <S-T> :tabnew<cr>
@@ -195,9 +217,6 @@ imap <C-H> <Esc><C-H>
 
 "设置建立新行但是不插入
 map <S-O> o<ESC>
-
-"设置快速不保存退出快捷键
-map <S-Q> :q!<CR>:q!<CR>:q!<CR>
 
 " 判断操作系统
 if (has("win32") || has("win64") || has("win32unix"))
@@ -219,9 +238,13 @@ autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
 "命令条高度
 set cmdheight=1
 
-" No sound on errors
+" 不让vim发出讨厌的滴滴声
 set noerrorbells
+
+" 不要闪烁
 set novisualbell
+
+"
 set t_vb=
 
 "" 在命令模式下使用 Tab 自动补全的时候， 将补全内容使用一个漂亮的单行菜单形式显示出来。 
@@ -229,17 +252,26 @@ set wildmenu
 
 ""定义函数SetTitle，自动插入文件头 
 func SetTitle() 
-"如果文件类型为.sh文件 
-if &filetype == 'sh' 
-	call setline(1,"\#########################################################################") 
-	call append(line("."), "\# Author: Pipi.Y.Fu") 
-	call append(line(".")+1, "\# Created Time: ".strftime("%c")) 
-	call append(line(".")+2, "\# File Name: ".expand("%")) 
-	call append(line(".")+3, "\# Description: ") 
-	call append(line(".")+4, "\#########################################################################") 
-	call append(line(".")+5, "\#!/bin/bash") 
-	call append(line(".")+6, "") 
-elseif &filetype == 'php' 
+	if &filetype == 'sh' 
+		call setline(1,"\#########################################################################") 
+		call append(line("."), "\# Author: Pipi.Y.Fu") 
+		call append(line(".")+1, "\# Created Time: ".strftime("%c")) 
+		call append(line(".")+2, "\# File Name: ".expand("%")) 
+		call append(line(".")+3, "\# Description: ") 
+		call append(line(".")+4, "\#########################################################################") 
+		call append(line(".")+5, "\#!/bin/bash") 
+		call append(line(".")+6, "") 
+	elseif &filetype == 'python' 
+		call setline(1,"\#########################################################################") 
+		call append(line("."), "\# Author: Pipi.Y.Fu") 
+		call append(line(".")+1, "\# Created Time: ".strftime("%c")) 
+		call append(line(".")+2, "\# File Name: ".expand("%")) 
+		call append(line(".")+3, "\# Description: ") 
+		call append(line(".")+4, "\#########################################################################") 
+		call append(line(".")+5, "\#!/usr/bin/python")
+		call append(line(".")+6,"\# -*- coding: UTF8 -*-")		
+		call append(line(".")+7, "")
+	elseif &filetype == 'php' 
 		call setline(1, "<?php") 
 		call append(line("."), "/*************************************************************************") 
 		call append(line(".")+1, " Author: Pipi.Y.Fu") 
@@ -248,7 +280,7 @@ elseif &filetype == 'php'
 		call append(line(".")+4, " Description: ") 
 		call append(line(".")+5, " ************************************************************************/") 
 		call append(line(".")+6, "?>") 
-		call append(line(".")+7, "") 
+	 	call append(line(".")+7, "") 
 	else 
 		call setline(1, "/*************************************************************************") 
 		call append(line("."), " Author: Pipi.Y.Fu") 
@@ -257,9 +289,9 @@ elseif &filetype == 'php'
 		call append(line(".")+3, " Description: ") 
 		call append(line(".")+4, " ************************************************************************/") 
 		call append(line(".")+5, "") 
-		endif 
-		endfunc 
-map <F3> <Esc>:call SetTitle()<CR><Esc>:$<Esc>o
+	endif 
+endfunc 
+map <F3> <Esc>:call SetTitle()<CR>
 
 "注释代码使得不再起作用
 function Comment()
@@ -319,7 +351,7 @@ endfunc
 ""结束定义FormartSrc
 
 "代码格式化
-map <F11> <Esc>:call FormatSrc()<CR><Esc>:$<Esc>o
+map <F6> <Esc>:call FormatSrc()<CR><Esc>:$<Esc>o
 
 "在gvim中高亮当前行
 if (g:isGUI)
@@ -380,6 +412,8 @@ nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
-au FileType php setlocal dict+=~/.vim/dict/phpfunclist.txt
+"au FileType php setlocal dict+=~/.vim/dict/phpfunclist.txt
+au FileType php set complete+=k~/.vim/dict/phpfunclist.txt
 let g:pydiction_location='~/.vim/ftplugin/pydiction/complete-dict'
+autocmd FileType python set complete+=k~/.vim/ftplugin/pydiction/complete-dict 
 autocmd FileType c set omnifunc=ccomplete#Complete
