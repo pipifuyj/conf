@@ -198,6 +198,8 @@ nmap <leader>w :w!<cr>
 " 快速保存x 替代 x! 
 nmap <leader>x :x!<cr>
 
+nmap <leader>b :ConqueTerm bash<cr>
+
 " ^z快速进入shell
 nmap <C-Z>  :q!<CR>:q!<CR>:q!<CR>
 
@@ -262,14 +264,14 @@ func SetTitle()
 		call append(line(".")+5, "\#!/bin/bash") 
 		call append(line(".")+6, "") 
 	elseif &filetype == 'python' 
-		call setline(1,"\#########################################################################") 
-		call append(line("."), "\# Author: Pipi.Y.Fu") 
-		call append(line(".")+1, "\# Created Time: ".strftime("%c")) 
-		call append(line(".")+2, "\# File Name: ".expand("%")) 
-		call append(line(".")+3, "\# Description: ") 
-		call append(line(".")+4, "\#########################################################################") 
-		call append(line(".")+5, "\#!/usr/bin/python")
-		call append(line(".")+6,"\# -*- coding: UTF8 -*-")		
+		call setline(1, "\#!/usr/bin/python")
+		call append(line("."),"\# -*- coding: UTF8 -*-")		
+		call append(line(".")+1,"\#########################################################################") 
+		call append(line(".")+2, "\# Author: Pipi.Y.Fu") 
+		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+		call append(line(".")+4, "\# File Name: ".expand("%")) 
+		call append(line(".")+5, "\# Description: ") 
+		call append(line(".")+6, "\#########################################################################") 
 		call append(line(".")+7, "")
 	elseif &filetype == 'php' 
 		call setline(1, "<?php") 
